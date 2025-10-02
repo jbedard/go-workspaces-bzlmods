@@ -14,6 +14,12 @@ local_path_override(
     path = "..",
 )
 
+bazel_dep(name = "go_workspaces_bzlmod_b")
+local_path_override(
+    module_name = "go_workspaces_bzlmod_b",
+    path = "../b",
+)
+
 go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
 go_deps.from_file(go_mod = "//:go.mod")
 use_repo(go_deps, "com_github_emirpasic_gods", "com_github_jbedard_go_workspaces_bzlmod_a", "com_github_jbedard_go_workspaces_bzlmod_b")

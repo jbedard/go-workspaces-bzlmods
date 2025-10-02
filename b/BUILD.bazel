@@ -1,13 +1,15 @@
 load("@gazelle//:def.bzl", "gazelle")
 load("@rules_go//go:def.bzl", "go_library")
 
+# gazelle:resolve go github.com/jbedard/go-workspaces-bzlmod/a @go_workspaces_bzlmod//a
+
 go_library(
     name = "b",
     srcs = ["lib.go"],
     importpath = "github.com/jbedard/go-workspaces-bzlmod/b",
     visibility = ["//visibility:public"],
     deps = [
-        "@com_github_jbedard_go_workspaces_bzlmod_a//:a",
+        "@go_workspaces_bzlmod//a",
         "@org_golang_x_term//:term",
     ],
 )

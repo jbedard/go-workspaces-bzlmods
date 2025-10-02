@@ -1,6 +1,9 @@
 load("@gazelle//:def.bzl", "gazelle")
 load("@rules_go//go:def.bzl", "go_library")
 
+# gazelle:resolve go github.com/jbedard/go-workspaces-bzlmod/a @go_workspaces_bzlmod//a
+# gazelle:resolve go github.com/jbedard/go-workspaces-bzlmod/b @go_workspaces_bzlmod_b//:b
+
 go_library(
     name = "c",
     srcs = ["lib.go"],
@@ -8,8 +11,8 @@ go_library(
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_emirpasic_gods//utils",
-        "@com_github_jbedard_go_workspaces_bzlmod_a//:a",
-        "@com_github_jbedard_go_workspaces_bzlmod_b//:b",
+        "@go_workspaces_bzlmod//a",
+        "@go_workspaces_bzlmod_b//:b",
     ],
 )
 
