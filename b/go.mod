@@ -5,7 +5,7 @@ go 1.25.0
 replace github.com/jbedard/go-workspaces-bzlmod/a => ../a
 
 require (
-	github.com/jbedard/go-workspaces-bzlmod/a v0.0.0-20251002070515-0828362d858c
+	github.com/jbedard/go-workspaces-bzlmod/a v0.0.0-20251002072952-b54f8c7af9c0
 	golang.org/x/term v0.35.0
 )
 

@@ -8,8 +8,8 @@ replace github.com/jbedard/go-workspaces-bzlmod/b => ../b
 
 require (
 	github.com/emirpasic/gods v1.18.1
-	github.com/jbedard/go-workspaces-bzlmod/a v0.0.0-20251002070515-0828362d858c
-	github.com/jbedard/go-workspaces-bzlmod/b v0.0.0-20251002070515-0828362d858c
+	github.com/jbedard/go-workspaces-bzlmod/a v0.0.0-20251002072952-b54f8c7af9c0
+	github.com/jbedard/go-workspaces-bzlmod/b v0.0.0-20251002072952-b54f8c7af9c0
 )
 
 require (
