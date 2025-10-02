@@ -1,0 +1,19 @@
+load("@gazelle//:def.bzl", "gazelle")
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "b",
+    srcs = ["lib.go"],
+    importpath = "github.com/jbedard/go-workspaces-bzlmod/b",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_jbedard_go_workspaces_bzlmod_a//:a",
+        "@org_golang_x_term//:term",
+    ],
+)
+
+gazelle(
+    name = "gazelle",
+    extra_args = ["-index=lazy"],
+    gazelle = "@go_workspaces_bzlmod//:gazelle_bin",
+)

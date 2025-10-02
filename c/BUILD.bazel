@@ -1,0 +1,20 @@
+load("@gazelle//:def.bzl", "gazelle")
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "c",
+    srcs = ["lib.go"],
+    importpath = "github.com/jbedard/go-workspaces-bzlmod/c",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_emirpasic_gods//utils",
+        "@com_github_jbedard_go_workspaces_bzlmod_a//:a",
+        "@com_github_jbedard_go_workspaces_bzlmod_b//:b",
+    ],
+)
+
+gazelle(
+    name = "gazelle",
+    extra_args = ["-index=lazy"],
+    gazelle = "@go_workspaces_bzlmod//:gazelle_bin",
+)

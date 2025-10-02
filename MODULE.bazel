@@ -1,0 +1,22 @@
+module(name = "go_workspaces_bzlmod")
+
+bazel_dep(
+    name = "rules_go",
+    version = "0.57.0",
+)
+bazel_dep(
+    name = "gazelle",
+    version = "0.45.0",
+)
+
+go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
+go_deps.from_file(go_mod = "//a:go.mod")
+
+####### Dev dependencies ########
+
+# Go SDK version which can only be defined in a root MODULE
+go_sdk2 = use_extension("@rules_go//go:extensions.bzl", "go_sdk", dev_dependency = True)
+go_sdk2.from_file(
+    name = "go_sdk",
+    go_mod = "//a:go.mod",
+)
