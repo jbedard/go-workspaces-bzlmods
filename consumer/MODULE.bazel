@@ -1,4 +1,4 @@
-module(name = "go_workspaces_bzlmod_b")
+module(name = "go_workspaces_bzlmod_consumer")
 
 bazel_dep(
     name = "rules_go",
@@ -14,9 +14,20 @@ local_path_override(
     path = "..",
 )
 
+bazel_dep(name = "go_workspaces_bzlmod_b")
+local_path_override(
+    module_name = "go_workspaces_bzlmod_b",
+    path = "../b",
+)
+
+bazel_dep(name = "go_workspaces_bzlmod_c")
+local_path_override(
+    module_name = "go_workspaces_bzlmod_c",
+    path = "../c",
+)
+
 go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
 go_deps.from_file(go_mod = "//:go.mod")
-use_repo(go_deps, "org_golang_x_term")
 
 ####### Dev dependencies ########
 

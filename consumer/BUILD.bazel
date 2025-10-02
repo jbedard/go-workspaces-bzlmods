@@ -1,0 +1,28 @@
+load("@gazelle//:def.bzl", "gazelle")
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+# gazelle:resolve go github.com/jbedard/go-workspaces-bzlmod/a @go_workspaces_bzlmod//a
+# gazelle:resolve go github.com/jbedard/go-workspaces-bzlmod/c @go_workspaces_bzlmod_c//:c
+
+gazelle(
+    name = "gazelle",
+    extra_args = ["-index=lazy"],
+    gazelle = "@go_workspaces_bzlmod//:gazelle_bin",
+)
+
+go_library(
+    name = "consumer_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/jbedard/go-workspaces-bzlmod/consumer",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@go_workspaces_bzlmod//a",
+        "@go_workspaces_bzlmod_c//:c",
+    ],
+)
+
+go_binary(
+    name = "consumer",
+    embed = [":consumer_lib"],
+    visibility = ["//visibility:public"],
+)
